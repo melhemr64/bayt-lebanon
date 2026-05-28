@@ -10,6 +10,8 @@
 :root{--primary:#1a365d;--primary-light:#2c5282;--accent:#c9a227;--bg:#f7fafc;--surface:#ffffff;--text:#1a202c;--text-muted:#718096;--border:#e2e8f0;--shadow:0 4px 6px -1px rgba(0,0,0,0.1);--shadow-lg:0 20px 25px -5px rgba(0,0,0,0.1);--success:#38a169;--danger:#e53e3e;--grad:linear-gradient(135deg,#1a365d 0%,#0f2744 100%);}
 [data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text-muted:#94a3b8;--border:#334155;}
 *{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
 body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
 .navbar{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(10px);}
 .nav-container{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
@@ -153,14 +155,14 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 </head>
 <body>
 <nav class="navbar"><div class="nav-container">
-<a href="#" class="logo"><i class="fas fa-building"></i><span data-key="logo">بيت لبنان</span></a>
+<a href="#buy" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><i class="fas fa-building"></i><span data-key="logo">بيت لبنان</span></a>
 <ul class="nav-links">
-<li><a href="#" class="active" data-key="nav_buy">شراء</a></li>
-<li><a href="#" data-key="nav_rent">إيجار</a></li>
-<li><a href="#" data-key="nav_commercial">تجاري</a></li>
-<li><a href="#" data-key="nav_new">مشاريع جديدة</a></li>
-<li><a href="#" data-key="nav_agents">الوكلاء</a></li>
-<li><a href="#" data-key="nav_analysis">تحليل السوق</a></li>
+<li><a href="#buy" class="active" data-key="nav_buy">شراء</a></li>
+<li><a href="#rent" data-key="nav_rent">إيجار</a></li>
+<li><a href="#commercial" data-key="nav_commercial">تجاري</a></li>
+<li><a href="#new" data-key="nav_new">مشاريع جديدة</a></li>
+<li><a href="#agents" data-key="nav_agents">الوكلاء</a></li>
+<li><a href="#analysis" data-key="nav_analysis">تحليل السوق</a></li>
 </ul>
 <div class="nav-actions">
 <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع"><i class="fas fa-moon"></i></button>
@@ -170,7 +172,7 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
 </div></nav>
 
-<section class="hero"><div class="hero-content">
+<section class="hero" id="buy"><div class="hero-content">
 <h1 data-key="hero_title">ابحث عن <span>منزل أحلامك</span> في لبنان</h1>
 <p data-key="hero_desc">اكتشف العقارات المتميزة في بيروت جبيل بترون وغيرها. من الشقق الفاخرة على الواجهة البحرية إلى الفيلات الجبلية.</p>
 <div class="search-container">
@@ -239,7 +241,17 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop" alt="شقة"><span class="property-badge badge-featured">مميز</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">750,000$ </div><h3 class="property-title">شقة بحديقة في بترون</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>بترون، شمال لبنان</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 3 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 2 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 200 م²</span></div></div></div>
 </div></section>
 
-<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="section-header"><div>
+
+<section class="section" id="rent" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="section-header"><div>
+<h2 class="section-title" data-key="sec_rent">عقارات للإيجار</h2>
+<p class="section-subtitle" data-key="sec_rent_sub">أفضل الخيارات للإيجار في لبنان</p>
+</div></div>
+<div class="properties-grid">
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="شقة"><span class="property-badge badge-rent">للإيجار</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">2,500$ <span>/شهر</span></div><h3 class="property-title">شقة مفروشة في الأشرفية</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>الأشرفية، بيروت</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 2 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 2 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 150 م²</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="فيلا"><span class="property-badge badge-rent">للإيجار</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">4,000$ <span>/شهر</span></div><h3 class="property-title">فيلا للإيجار في نادي فقرا</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>فقرا، كسروان</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 4 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 3 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 320 م²</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="شقة"><span class="property-badge badge-rent">للإيجار</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">1,800$ <span>/شهر</span></div><h3 class="property-title">شقة حديثة في بترون</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>بترون، شمال لبنان</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 3 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 2 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 180 م²</span></div></div></div>
+</div></section>
+<section class="section" id="analysis" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="section-header"><div>
 <h2 class="section-title" data-key="sec_analysis">تحليل السوق 2026</h2>
 <p class="section-subtitle" data-key="sec_analysis_sub">تحليل مبني على البيانات لسوق العقارات اللبناني</p>
 </div></div>
@@ -249,6 +261,15 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <div class="insight-card"><div class="insight-icon"><i class="fas fa-home"></i></div><h3 class="insight-title" data-key="insight3_title">سوق الإيجار</h3><p class="insight-text" data-key="insight3_text">ارتفع الطلب على الإيجارات بسبب النزوح الداخلي والعائدين. الشقق الصغيرة والمتوسطة في المناطق الآمنة تشهد أعلى طلب.</p><div class="insight-stat"><div><div class="insight-stat-value">+15%</div><div class="insight-stat-label" data-key="insight3_label">طلب الإيجار</div></div><span style="color:var(--success);font-weight:700;">نشاط مرتفع</span></div></div>
 </div></section>
 
+
+<section class="section" id="commercial"><div class="section-header"><div>
+<h2 class="section-title" data-key="sec_commercial">عقارات تجارية</h2>
+<p class="section-subtitle" data-key="sec_commercial_sub">مساحات تجارية ومكاتب في أفضل المواقع</p>
+</div></div>
+<div class="properties-grid">
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop" alt="مكتب"><span class="property-badge badge-sale">للبيع</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">1,200,000$ </div><h3 class="property-title">مكتب فاخر في وسط بيروت</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>وسط بيروت</div><div class="property-features"><span class="property-feature"><i class="fas fa-ruler-combined"></i> 350 م²</span><span class="property-feature"><i class="fas fa-building"></i> طابق كامل</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop" alt="محل"><span class="property-badge badge-rent">للإيجار</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">3,500$ <span>/شهر</span></div><h3 class="property-title">محل تجاري في الأشرفية</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>الأشرفية، بيروت</div><div class="property-features"><span class="property-feature"><i class="fas fa-ruler-combined"></i> 120 م²</span><span class="property-feature"><i class="fas fa-store"></i> واجهة رئيسية</span></div></div></div>
+</div></section>
 <section class="section"><div class="section-header"><div>
 <h2 class="section-title" data-key="sec_regions">استكشف حسب المنطقة</h2>
 <p class="section-subtitle" data-key="sec_regions_sub">اكتشف العقارات في أكثر مناطق لبنان طلباً</p>
@@ -260,6 +281,15 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <div class="region-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" alt="بترون"><div class="region-overlay"><div class="region-name">بترون</div><div class="region-count">198 عقار</div></div><div class="region-price">من 900$/م²</div></div>
 </div></section>
 
+
+<section class="section" id="new" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="section-header"><div>
+<h2 class="section-title" data-key="sec_new">مشاريع جديدة</h2>
+<p class="section-subtitle" data-key="sec_new_sub">أحدث المشاريع العقارية قيد الإنشاء</p>
+</div></div>
+<div class="properties-grid">
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&h=400&fit=crop" alt="مشروع"><span class="property-badge badge-featured">جديد</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">يبدأ من 450,000$ </div><h3 class="property-title">برج لبنان السكني</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>وسط بيروت</div><div class="property-features"><span class="property-feature"><i class="fas fa-building"></i> 25 طابق</span><span class="property-feature"><i class="fas fa-calendar"></i> التسليم 2027</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=400&fit=crop" alt="مشروع"><span class="property-badge badge-featured">جديد</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">يبدأ من 280,000$ </div><h3 class="property-title">منتجع جبيل الساحلي</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>جبيل</div><div class="property-features"><span class="property-feature"><i class="fas fa-umbrella-beach"></i> واجهة بحرية</span><span class="property-feature"><i class="fas fa-calendar"></i> التسليم 2026</span></div></div></div>
+</div></section>
 <section class="section"><div class="calculator-section"><div>
 <h2 style="font-size:2rem;margin-bottom:1rem;" data-key="calc_title">حاسبة الاستثمار</h2>
 <p style="opacity:.9;margin-bottom:2rem;" data-key="calc_desc">قدر مدفوعاتك الشهرية وعوائد استثمارك في العقارات اللبنانية. ملاحظة: التمويل المصرفي محدود؛ معظم الصفقات نقدية.</p>
@@ -277,7 +307,7 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <div class="calc-result-item"><span data-key="res_total">التكلفة الإجمالية</span><span id="resultTotal">852,720$</span></div>
 </div></div></section>
 
-<section class="section"><div class="section-header"><div>
+<section class="section" id="agents"><div class="section-header"><div>
 <h2 class="section-title" data-key="sec_agents">الوكلاء المميزون</h2>
 <p class="section-subtitle" data-key="sec_agents_sub">تعامل مع أفضل محترفي العقارات في لبنان</p>
 </div><a href="#" class="view-all"><span data-key="view_agents">عرض جميع الوكلاء</span> <i class="fas fa-arrow-left"></i></a></div>
@@ -306,6 +336,7 @@ hero_title:"ابحث عن منزل أحلامك في لبنان",hero_desc:"اك
 tab_buy:"شراء",tab_rent:"إيجار",tab_commercial:"تجاري",tab_new:"مشاريع جديدة",
 lbl_location:"الموقع",lbl_type:"نوع العقار",lbl_min:"السعر الأدنى",lbl_max:"السعر الأقصى",btn_search:"بحث",
 stat_avg:"متوسط السعر/م² (مميز)",stat_listed:"عقار معروض",stat_sale:"متوسط سعر البيع",stat_days:"متوسط مدة البيع",
+sec_rent:"عقارات للإيجار",sec_rent_sub:"أفضل الخيارات للإيجار في لبنان",sec_commercial:"عقارات تجارية",sec_commercial_sub:"مساحات تجارية ومكاتب في أفضل المواقع",sec_new:"مشاريع جديدة",sec_new_sub:"أحدث المشاريع العقارية قيد الإنشاء",
 sec_featured:"عقارات مميزة",sec_featured_sub:"عقارات مختارة بعناية في أفضل مناطق لبنان",view_all:"عرض الكل",filter_all:"الكل",
 sec_analysis:"تحليل السوق 2026",sec_analysis_sub:"تحليل مبني على البيانات لسوق العقارات اللبناني",
 insight1_title:"تعافي الأسعار",insight1_text:"استعادت المناطق الرئيسية مثل وسط بيروت والأشرفية 80% من مستويات ما قبل الأزمة، مدفوعة بطلب المغتربين والمشترين النقديين.",insight1_label:"نمو بيروت سنوياً",
@@ -330,6 +361,7 @@ hero_title:"Find Your Dream Home in Lebanon",hero_desc:"Discover premium propert
 tab_buy:"Buy",tab_rent:"Rent",tab_commercial:"Commercial",tab_new:"New Projects",
 lbl_location:"Location",lbl_type:"Property Type",lbl_min:"Min Price",lbl_max:"Max Price",btn_search:"Search",
 stat_avg:"Avg Price/m² (Premium)",stat_listed:"Properties Listed",stat_sale:"Avg Sale Price",stat_days:"Avg Days to Sell",
+sec_rent:"Properties for Rent",sec_rent_sub:"Best rental options in Lebanon",sec_commercial:"Commercial Properties",sec_commercial_sub:"Commercial spaces and offices in prime locations",sec_new:"New Projects",sec_new_sub:"Latest real estate projects under construction",
 sec_featured:"Featured Properties",sec_featured_sub:"Carefully selected properties in Lebanon best areas",view_all:"View All",filter_all:"All",
 sec_analysis:"2026 Market Analysis",sec_analysis_sub:"Data-driven analysis of the Lebanese real estate market",
 insight1_title:"Price Recovery",insight1_text:"Key areas like Downtown Beirut and Achrafieh have recovered 80% of pre-crisis levels, driven by diaspora demand and cash buyers.",insight1_label:"Beirut Annual Growth",
@@ -465,6 +497,24 @@ document.querySelectorAll('.property-card').forEach(card=>{
 card.addEventListener('click',()=>showToast(currentLang==='ar'?'جاري فتح تفاصيل العقار...':'Opening property details...'));
 });
 
+
+// Smooth scroll with offset for fixed navbar
+function scrollToSection(e){
+if(e.target.tagName==='A'&&e.target.getAttribute('href')&&e.target.getAttribute('href').startsWith('#')){
+e.preventDefault();
+const id=e.target.getAttribute('href');
+const el=document.querySelector(id);
+if(el){
+const offset=80;
+const top=el.getBoundingClientRect().top+window.pageYOffset-offset;
+window.scrollTo({top:top,behavior:'smooth'});
+// Update active state
+document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+e.target.classList.add('active');
+}
+}
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',scrollToSection));
 document.addEventListener('DOMContentLoaded',function(){
 const savedTheme=localStorage.getItem('theme');
 if(savedTheme)document.documentElement.setAttribute('data-theme',savedTheme);

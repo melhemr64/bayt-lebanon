@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: melhemr64
+Site: https://melhemr64.github.io/bayt-lebanon/
+From: Lebanon
+
+/* SITE */
+Last update: 2026/05/28
+Language: Arabic / English
+Standards: HTML5, CSS3
+Components: Font Awesome, Google Fonts

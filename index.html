@@ -145,7 +145,7 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <div class="nav-actions">
 <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع"><i class="fas fa-moon"></i></button>
 <button class="icon-btn" onclick="toggleLanguage()" title="Switch Language"><i class="fas fa-globe"></i></button>
-<button class="btn btn-primary" onclick="showToast('جاري فتح نموذج إضافة عقار جديد...')"><i class="fas fa-plus"></i>أضف عقار</button>
+<button class="btn btn-primary" onclick="showToast('جاري فتح نموذج إضافة عقار جديد...')"><i class="fas fa-plus"></i><span data-key="add_property">أضف عقار</span></button>
 </div>
 <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
 </div></nav>
@@ -326,31 +326,135 @@ footer_rights:'Real Estate. All Rights Reserved.',footer_city:'Beirut, Lebanon'
 
 let currentLang='ar';
 
-function toggleTheme(){const html=document.documentElement;const current=html.getAttribute('data-theme');const next=current==='dark'?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);const icon=document.querySelector('.fa-moon');if(icon){icon.classList.toggle('fa-sun');icon.classList.toggle('fa-moon');}}
+function toggleTheme(){
+const html=document.documentElement;
+const current=html.getAttribute('data-theme');
+const next=current==='dark'?'light':'dark';
+html.setAttribute('data-theme',next);
+localStorage.setItem('theme',next);
+const icon=document.querySelector('.fa-moon');
+if(icon){
+icon.classList.toggle('fa-sun');
+icon.classList.toggle('fa-moon');
+}
+}
 
-function toggleLanguage(){currentLang=currentLang==='ar'?'en':'ar';localStorage.setItem('lang',currentLang);applyLanguage();showToast(currentLang==='ar'?'تم تبديل اللغة إلى العربية':'Language switched to English');}
+function toggleLanguage(){
+currentLang=currentLang==='ar'?'en':'ar';
+localStorage.setItem('lang',currentLang);
+applyLanguage();
+showToast(currentLang==='ar'?'تم تبديل اللغة إلى العربية':'Language switched to English');
+}
 
-function applyLanguage(){const t=translations[currentLang];document.querySelectorAll('[data-key]').forEach(el=>{const key=el.getAttribute('data-key');if(t[key]){if(el.tagName==='INPUT'&&el.placeholder)el.placeholder=t[key];else el.textContent=t[key];}});const html=document.documentElement;html.lang=currentLang;html.dir=currentLang==='ar'?'rtl':'ltr';}
+function applyLanguage(){
+const t=translations[currentLang];
+document.querySelectorAll('[data-key]').forEach(el=>{
+const key=el.getAttribute('data-key');
+if(t[key]){
+if(el.tagName==='INPUT'&&el.placeholder){
+el.placeholder=t[key];
+} else {
+el.textContent=t[key];
+}
+}
+});
+const html=document.documentElement;
+html.lang=currentLang;
+html.dir=currentLang==='ar'?'rtl':'ltr';
+}
 
-function calculateMortgage(){const price=parseFloat(document.getElementById('propertyPrice').value)||0;const dp=parseFloat(document.getElementById('downPayment').value)||0;const rate=parseFloat(document.getElementById('interestRate').value)||0;const years=parseInt(document.getElementById('loanTerm').value)||20;const down=price*(dp/100);const loan=price-down;const mr=rate/100/12;const np=years*12;let mp=0;if(rate>0){mp=loan*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);}else{mp=loan/np;}const tc=mp*np;const ti=tc-loan;document.getElementById('resultPrice').textContent='$'+price.toLocaleString();document.getElementById('resultDown').textContent='$'+Math.round(down).toLocaleString();document.getElementById('resultLoan').textContent='$'+Math.round(loan).toLocaleString();document.getElementById('resultMonthly').textContent='$'+Math.round(mp).toLocaleString();document.getElementById('resultInterest').textContent='$'+Math.round(ti).toLocaleString();document.getElementById('resultTotal').textContent='$'+Math.round(tc).toLocaleString();}
+function calculateMortgage(){
+const price=parseFloat(document.getElementById('propertyPrice').value)||0;
+const dp=parseFloat(document.getElementById('downPayment').value)||0;
+const rate=parseFloat(document.getElementById('interestRate').value)||0;
+const years=parseInt(document.getElementById('loanTerm').value)||20;
+const down=price*(dp/100);
+const loan=price-down;
+const mr=rate/100/12;
+const np=years*12;
+let mp=0;
+if(rate>0){
+mp=loan*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);
+} else {
+mp=loan/np;
+}
+const tc=mp*np;
+const ti=tc-loan;
+document.getElementById('resultPrice').textContent='$'+price.toLocaleString();
+document.getElementById('resultDown').textContent='$'+Math.round(down).toLocaleString();
+document.getElementById('resultLoan').textContent='$'+Math.round(loan).toLocaleString();
+document.getElementById('resultMonthly').textContent='$'+Math.round(mp).toLocaleString();
+document.getElementById('resultInterest').textContent='$'+Math.round(ti).toLocaleString();
+document.getElementById('resultTotal').textContent='$'+Math.round(tc).toLocaleString();
+}
 
-function searchProperties(){const loc=document.getElementById('searchLocation').value;const type=document.getElementById('propertyType').value;const msg=currentLang==='ar'?'جاري البحث عن '+type+' في '+(loc||'لبنان')+'...':'Searching for '+type+' in '+(loc||'Lebanon')+'...';showToast(msg);document.getElementById('propertiesGrid').style.opacity='0.5';setTimeout(()=>document.getElementById('propertiesGrid').style.opacity='1',500);}
+function searchProperties(){
+const loc=document.getElementById('searchLocation').value;
+const type=document.getElementById('propertyType').value;
+const msg=currentLang==='ar'?'جاري البحث عن '+type+' في '+(loc||'لبنان')+'...':'Searching for '+type+' in '+(loc||'Lebanon')+'...';
+showToast(msg);
+document.getElementById('propertiesGrid').style.opacity='0.5';
+setTimeout(()=>document.getElementById('propertiesGrid').style.opacity='1',500);
+}
 
-function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastMessage').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+function showToast(msg){
+const t=document.getElementById('toast');
+document.getElementById('toastMessage').textContent=msg;
+t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'),3000);
+}
 
-document.querySelectorAll('.filter-tag').forEach(tag=>{tag.addEventListener('click',function(){document.querySelectorAll('.filter-tag').forEach(t=>t.classList.remove('active'));this.classList.add('active');showToast(currentLang==='ar'?'تم التصفية حسب: '+this.textContent:'Filtered by: '+this.textContent);});});
+document.querySelectorAll('.filter-tag').forEach(tag=>{
+tag.addEventListener('click',function(){
+document.querySelectorAll('.filter-tag').forEach(t=>t.classList.remove('active'));
+this.classList.add('active');
+showToast(currentLang==='ar'?'تم التصفية حسب: '+this.textContent:'Filtered by: '+this.textContent);
+});
+});
 
-document.querySelectorAll('.search-tab').forEach(tab=>{tab.addEventListener('click',function(){document.querySelectorAll('.search-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active');});});
+document.querySelectorAll('.search-tab').forEach(tab=>{
+tab.addEventListener('click',function(){
+document.querySelectorAll('.search-tab').forEach(t=>t.classList.remove('active'));
+this.classList.add('active');
+});
+});
 
-document.querySelectorAll('.property-favorite').forEach(btn=>{btn.addEventListener('click',function(e){e.stopPropagation();const icon=this.querySelector('i');if(icon.classList.contains('far')){icon.classList.remove('far');icon.classList.add('fas');icon.style.color='#e53e3e';showToast(currentLang==='ar'?'تمت الإضافة إلى المفضلة':'Added to favorites');}else{icon.classList.remove('fas');icon.classList.add('far');icon.style.color='';showToast(currentLang==='ar'?'تمت الإزالة من المفضلة':'Removed from favorites');}});});
+document.querySelectorAll('.property-favorite').forEach(btn=>{
+btn.addEventListener('click',function(e){
+e.stopPropagation();
+const icon=this.querySelector('i');
+if(icon.classList.contains('far')){
+icon.classList.remove('far');
+icon.classList.add('fas');
+icon.style.color='#e53e3e';
+showToast(currentLang==='ar'?'تمت الإضافة إلى المفضلة':'Added to favorites');
+} else {
+icon.classList.remove('fas');
+icon.classList.add('far');
+icon.style.color='';
+showToast(currentLang==='ar'?'تمت الإزالة من المفضلة':'Removed from favorites');
+}
+});
+});
 
-document.querySelectorAll('.property-card').forEach(card=>{card.addEventListener('click',()=>showToast(currentLang==='ar'?'جاري فتح تفاصيل العقار...':'Opening property details...'));});}
+document.querySelectorAll('.property-card').forEach(card=>{
+card.addEventListener('click',()=>showToast(currentLang==='ar'?'جاري فتح تفاصيل العقار...':'Opening property details...'));
+});
 
 document.addEventListener('DOMContentLoaded',function(){
-const savedTheme=localStorage.getItem('theme');if(savedTheme)document.documentElement.setAttribute('data-theme',savedTheme);
-const savedLang=localStorage.getItem('lang');if(savedLang){currentLang=savedLang;applyLanguage();}
+const savedTheme=localStorage.getItem('theme');
+if(savedTheme)document.documentElement.setAttribute('data-theme',savedTheme);
+const savedLang=localStorage.getItem('lang');
+if(savedLang){
+currentLang=savedLang;
+applyLanguage();
+}
 calculateMortgage();
-const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('animate-in');});},{threshold:0.1});
+const obs=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add('animate-in');
+});
+},{threshold:0.1});
 document.querySelectorAll('.property-card,.insight-card,.region-card,.agent-card').forEach(el=>obs.observe(el));
 });
 </script>

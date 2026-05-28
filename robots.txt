@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://melhemr64.github.io/bayt-lebanon/sitemap.xml

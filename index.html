@@ -145,7 +145,7 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <div class="nav-actions">
 <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع"><i class="fas fa-moon"></i></button>
 <button class="icon-btn" onclick="toggleLanguage()" title="Switch Language"><i class="fas fa-globe"></i></button>
-<button class="btn btn-primary" onclick="showToast('جاري فتح نموذج إضافة عقار جديد...')"><i class="fas fa-plus"></i>أضف عقار</button>
+<button class="btn btn-primary" onclick="showToast('جاري فتح نموذج إضافة عقار جديد...')"><i class="fas fa-plus"></i><span data-key="add_property">أضف عقار</span></button>
 </div>
 <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
 </div></nav>
@@ -279,48 +279,48 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <script>
 const translations={
 ar:{
-logo:'بيت لبنان',nav_buy:'شراء',nav_rent:'إيجار',nav_commercial:'تجاري',nav_new:'مشاريع جديدة',nav_agents:'الوكلاء',nav_analysis:'تحليل السوق',
-add_property:'أضف عقار',hero_title:'ابحث عن منزل أحلامك في لبنان',hero_desc:'اكتشف العقارات المتميزة في بيروت جبيل بترون وغيرها. من الشقق الفاخرة على الواجهة البحرية إلى الفيلات الجبلية.',
-tab_buy:'شراء',tab_rent:'إيجار',tab_commercial:'تجاري',tab_new:'مشاريع جديدة',
-lbl_location:'الموقع',lbl_type:'نوع العقار',lbl_min:'السعر الأدنى',lbl_max:'السعر الأقصى',btn_search:'بحث',
-stat_avg:'متوسط السعر/م² (مميز)',stat_listed:'عقار معروض',stat_sale:'متوسط سعر البيع',stat_days:'متوسط مدة البيع',
-sec_featured:'عقارات مميزة',sec_featured_sub:'عقارات مختارة بعناية في أفضل مناطق لبنان',view_all:'عرض الكل',filter_all:'الكل',
-sec_analysis:'تحليل السوق 2026',sec_analysis_sub:'تحليل مبني على البيانات لسوق العقارات اللبناني',
-insight1_title:'تعافي الأسعار',insight1_text:'استعادت المناطق الرئيسية مثل وسط بيروت والأشرفية 80% من مستويات ما قبل الأزمة، مدفوعة بطلب المغتربين والمشترين النقديين.',insight1_label:'نمو بيروت سنوياً',
-insight2_title:'ملف المشتري',insight2_text:'يسيطر على السوق المغتربون اللبنانيون والمستثمرون النقديون. المشترون المحليون لا يزالون مقيدين بسبب عدم توفر التمويل المصرفي.',insight2_label:'مشترين مغتربين',
-insight3_title:'سوق الإيجار',insight3_text:'ارتفع الطلب على الإيجارات بسبب النزوح الداخلي والعائدين. الشقق الصغيرة والمتوسطة في المناطق الآمنة تشهد أعلى طلب.',insight3_label:'طلب الإيجار',
-sec_regions:'استكشف حسب المنطقة',sec_regions_sub:'اكتشف العقارات في أكثر مناطق لبنان طلباً',
-calc_title:'حاسبة الاستثمار',calc_desc:'قدر مدفوعاتك الشهرية وعوائد استثمارك في العقارات اللبنانية. ملاحظة: التمويل المصرفي محدود؛ معظم الصفقات نقدية.',
-calc_price:'سعر العقار (دولار)',calc_down:'الدفعة الأولى (%)',calc_rate:'نسبة الفائدة (%)',calc_term:'مدة القرض (سنوات)',
-calc_summary:'ملخص المدفوعات',res_price:'سعر العقار',res_down:'الدفعة الأولى',res_loan:'مبلغ القرض',res_monthly:'القسط الشهري',res_interest:'إجمالي الفوائد',res_total:'التكلفة الإجمالية',
-sec_agents:'الوكلاء المميزون',sec_agents_sub:'تعامل مع أفضل محترفي العقارات في لبنان',view_agents:'عرض جميع الوكلاء',btn_contact:'تواصل',
-footer_desc:'أول منصة عقارية في لبنان تربط بين المشترين والبائعين والمستثمرين مع العقارات المتميزة في جميع أنحاء البلاد. موثوق بها منذ 2010.',
-ft_properties:'العقارات',ft_apartments:'شقق للبيع',ft_villas:'فيلات للبيع',ft_commercial:'مساحات تجارية',ft_land:'أراضي للبيع',ft_new:'مشاريع جديدة',
-ft_company:'الشركة',ft_about:'من نحن',ft_agents:'وكلاؤنا',ft_reports:'تقارير السوق',ft_careers:'الوظائف',ft_contact:'تواصل معنا',
-ft_support:'الدعم',ft_help:'مركز المساعدة',ft_terms:'شروط الخدمة',ft_privacy:'سياسة الخصوصية',ft_sitemap:'خريطة الموقع',ft_add:'أضف عقارك',
-footer_rights:'للعقارات. جميع الحقوق محفوظة.',footer_city:'بيروت، لبنان'
+logo:"بيت لبنان",nav_buy:"شراء",nav_rent:"إيجار",nav_commercial:"تجاري",nav_new:"مشاريع جديدة",nav_agents:"الوكلاء",nav_analysis:"تحليل السوق",
+add_property:"أضف عقار",hero_title:"ابحث عن منزل أحلامك في لبنان",hero_desc:"اكتشف العقارات المتميزة في بيروت جبيل بترون وغيرها. من الشقق الفاخرة على الواجهة البحرية إلى الفيلات الجبلية.",
+tab_buy:"شراء",tab_rent:"إيجار",tab_commercial:"تجاري",tab_new:"مشاريع جديدة",
+lbl_location:"الموقع",lbl_type:"نوع العقار",lbl_min:"السعر الأدنى",lbl_max:"السعر الأقصى",btn_search:"بحث",
+stat_avg:"متوسط السعر/م² (مميز)",stat_listed:"عقار معروض",stat_sale:"متوسط سعر البيع",stat_days:"متوسط مدة البيع",
+sec_featured:"عقارات مميزة",sec_featured_sub:"عقارات مختارة بعناية في أفضل مناطق لبنان",view_all:"عرض الكل",filter_all:"الكل",
+sec_analysis:"تحليل السوق 2026",sec_analysis_sub:"تحليل مبني على البيانات لسوق العقارات اللبناني",
+insight1_title:"تعافي الأسعار",insight1_text:"استعادت المناطق الرئيسية مثل وسط بيروت والأشرفية 80% من مستويات ما قبل الأزمة، مدفوعة بطلب المغتربين والمشترين النقديين.",insight1_label:"نمو بيروت سنوياً",
+insight2_title:"ملف المشتري",insight2_text:"يسيطر على السوق المغتربون اللبنانيون والمستثمرون النقديون. المشترون المحليون لا يزالون مقيدين بسبب عدم توفر التمويل المصرفي.",insight2_label:"مشترين مغتربين",
+insight3_title:"سوق الإيجار",insight3_text:"ارتفع الطلب على الإيجارات بسبب النزوح الداخلي والعائدين. الشقق الصغيرة والمتوسطة في المناطق الآمنة تشهد أعلى طلب.",insight3_label:"طلب الإيجار",
+sec_regions:"استكشف حسب المنطقة",sec_regions_sub:"اكتشف العقارات في أكثر مناطق لبنان طلباً",
+calc_title:"حاسبة الاستثمار",calc_desc:"قدر مدفوعاتك الشهرية وعوائد استثمارك في العقارات اللبنانية. ملاحظة: التمويل المصرفي محدود؛ معظم الصفقات نقدية.",
+calc_price:"سعر العقار (دولار)",calc_down:"الدفعة الأولى (%)",calc_rate:"نسبة الفائدة (%)",calc_term:"مدة القرض (سنوات)",
+calc_summary:"ملخص المدفوعات",res_price:"سعر العقار",res_down:"الدفعة الأولى",res_loan:"مبلغ القرض",res_monthly:"القسط الشهري",res_interest:"إجمالي الفوائد",res_total:"التكلفة الإجمالية",
+sec_agents:"الوكلاء المميزون",sec_agents_sub:"تعامل مع أفضل محترفي العقارات في لبنان",view_agents:"عرض جميع الوكلاء",btn_contact:"تواصل",
+footer_desc:"أول منصة عقارية في لبنان تربط بين المشترين والبائعين والمستثمرين مع العقارات المتميزة في جميع أنحاء البلاد. موثوق بها منذ 2010.",
+ft_properties:"العقارات",ft_apartments:"شقق للبيع",ft_villas:"فيلات للبيع",ft_commercial:"مساحات تجارية",ft_land:"أراضي للبيع",ft_new:"مشاريع جديدة",
+ft_company:"الشركة",ft_about:"من نحن",ft_agents:"وكلاؤنا",ft_reports:"تقارير السوق",ft_careers:"الوظائف",ft_contact:"تواصل معنا",
+ft_support:"الدعم",ft_help:"مركز المساعدة",ft_terms:"شروط الخدمة",ft_privacy:"سياسة الخصوصية",ft_sitemap:"خريطة الموقع",ft_add:"أضف عقارك",
+footer_rights:"للعقارات. جميع الحقوق محفوظة.",footer_city:"بيروت، لبنان"
 },
 en:{
-logo:'Bayt Lebanon',nav_buy:'Buy',nav_rent:'Rent',nav_commercial:'Commercial',nav_new:'New Projects',nav_agents:'Agents',nav_analysis:'Market Analysis',
-add_property:'Add Property',hero_title:'Find Your Dream Home in Lebanon',hero_desc:'Discover premium properties in Beirut, Jbeil, Batroun and more. From luxury seafront apartments to mountain villas.',
-tab_buy:'Buy',tab_rent:'Rent',tab_commercial:'Commercial',tab_new:'New Projects',
-lbl_location:'Location',lbl_type:'Property Type',lbl_min:'Min Price',lbl_max:'Max Price',btn_search:'Search',
-stat_avg:'Avg Price/m² (Premium)',stat_listed:'Properties Listed',stat_sale:'Avg Sale Price',stat_days:'Avg Days to Sell',
-sec_featured:'Featured Properties',sec_featured_sub:'Carefully selected properties in Lebanon's best areas',view_all:'View All',filter_all:'All',
-sec_analysis:'2026 Market Analysis',sec_analysis_sub:'Data-driven analysis of the Lebanese real estate market',
-insight1_title:'Price Recovery',insight1_text:'Key areas like Downtown Beirut and Achrafieh have recovered 80% of pre-crisis levels, driven by diaspora demand and cash buyers.',insight1_label:'Beirut Annual Growth',
-insight2_title:'Buyer Profile',insight2_text:'The market is dominated by Lebanese diaspora and cash investors. Local buyers remain constrained due to lack of bank financing.',insight2_label:'Diaspora Buyers',
-insight3_title:'Rental Market',insight3_text:'Rental demand has risen due to internal displacement and returnees. Small and medium apartments in safe areas see highest demand.',insight3_label:'Rental Demand',
-sec_regions:'Explore by Region',sec_regions_sub:'Discover properties in Lebanon's most sought-after areas',
-calc_title:'Investment Calculator',calc_desc:'Estimate your monthly payments and investment returns in Lebanese real estate. Note: Bank financing is limited; most deals are cash-based.',
-calc_price:'Property Price (USD)',calc_down:'Down Payment (%)',calc_rate:'Interest Rate (%)',calc_term:'Loan Term (Years)',
-calc_summary:'Payment Summary',res_price:'Property Price',res_down:'Down Payment',res_loan:'Loan Amount',res_monthly:'Monthly Payment',res_interest:'Total Interest',res_total:'Total Cost',
-sec_agents:'Featured Agents',sec_agents_sub:'Work with Lebanon's top real estate professionals',view_agents:'View All Agents',btn_contact:'Contact',
-footer_desc:'Lebanon's first real estate platform connecting buyers, sellers and investors with premium properties across the country. Trusted since 2010.',
-ft_properties:'Properties',ft_apartments:'Apartments for Sale',ft_villas:'Villas for Sale',ft_commercial:'Commercial Spaces',ft_land:'Land for Sale',ft_new:'New Projects',
-ft_company:'Company',ft_about:'About Us',ft_agents:'Our Agents',ft_reports:'Market Reports',ft_careers:'Careers',ft_contact:'Contact Us',
-ft_support:'Support',ft_help:'Help Center',ft_terms:'Terms of Service',ft_privacy:'Privacy Policy',ft_sitemap:'Sitemap',ft_add:'List Your Property',
-footer_rights:'Real Estate. All Rights Reserved.',footer_city:'Beirut, Lebanon'
+logo:"Bayt Lebanon",nav_buy:"Buy",nav_rent:"Rent",nav_commercial:"Commercial",nav_new:"New Projects",nav_agents:"Agents",nav_analysis:"Market Analysis",
+add_property:"Add Property",hero_title:"Find Your Dream Home in Lebanon",hero_desc:"Discover premium properties in Beirut, Jbeil, Batroun and more. From luxury seafront apartments to mountain villas.",
+tab_buy:"Buy",tab_rent:"Rent",tab_commercial:"Commercial",tab_new:"New Projects",
+lbl_location:"Location",lbl_type:"Property Type",lbl_min:"Min Price",lbl_max:"Max Price",btn_search:"Search",
+stat_avg:"Avg Price/m² (Premium)",stat_listed:"Properties Listed",stat_sale:"Avg Sale Price",stat_days:"Avg Days to Sell",
+sec_featured:"Featured Properties",sec_featured_sub:"Carefully selected properties in Lebanon best areas",view_all:"View All",filter_all:"All",
+sec_analysis:"2026 Market Analysis",sec_analysis_sub:"Data-driven analysis of the Lebanese real estate market",
+insight1_title:"Price Recovery",insight1_text:"Key areas like Downtown Beirut and Achrafieh have recovered 80% of pre-crisis levels, driven by diaspora demand and cash buyers.",insight1_label:"Beirut Annual Growth",
+insight2_title:"Buyer Profile",insight2_text:"The market is dominated by Lebanese diaspora and cash investors. Local buyers remain constrained due to lack of bank financing.",insight2_label:"Diaspora Buyers",
+insight3_title:"Rental Market",insight3_text:"Rental demand has risen due to internal displacement and returnees. Small and medium apartments in safe areas see highest demand.",insight3_label:"Rental Demand",
+sec_regions:"Explore by Region",sec_regions_sub:"Discover properties in Lebanon most sought-after areas",
+calc_title:"Investment Calculator",calc_desc:"Estimate your monthly payments and investment returns in Lebanese real estate. Note: Bank financing is limited; most deals are cash-based.",
+calc_price:"Property Price (USD)",calc_down:"Down Payment (%)",calc_rate:"Interest Rate (%)",calc_term:"Loan Term (Years)",
+calc_summary:"Payment Summary",res_price:"Property Price",res_down:"Down Payment",res_loan:"Loan Amount",res_monthly:"Monthly Payment",res_interest:"Total Interest",res_total:"Total Cost",
+sec_agents:"Featured Agents",sec_agents_sub:"Work with Lebanon top real estate professionals",view_agents:"View All Agents",btn_contact:"Contact",
+footer_desc:"Lebanon first real estate platform connecting buyers, sellers and investors with premium properties across the country. Trusted since 2010.",
+ft_properties:"Properties",ft_apartments:"Apartments for Sale",ft_villas:"Villas for Sale",ft_commercial:"Commercial Spaces",ft_land:"Land for Sale",ft_new:"New Projects",
+ft_company:"Company",ft_about:"About Us",ft_agents:"Our Agents",ft_reports:"Market Reports",ft_careers:"Careers",ft_contact:"Contact Us",
+ft_support:"Support",ft_help:"Help Center",ft_terms:"Terms of Service",ft_privacy:"Privacy Policy",ft_sitemap:"Sitemap",ft_add:"List Your Property",
+footer_rights:"Real Estate. All Rights Reserved.",footer_city:"Beirut, Lebanon"
 }
 };
 

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بيت لبنان | العقارات في لبنان</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--primary:#1a365d;--primary-light:#2c5282;--accent:#c9a227;--bg:#f7fafc;--surface:#ffffff;--text:#1a202c;--text-muted:#718096;--border:#e2e8f0;--shadow:0 4px 6px -1px rgba(0,0,0,0.1);--shadow-lg:0 20px 25px -5px rgba(0,0,0,0.1);--success:#38a169;--danger:#e53e3e;--grad:linear-gradient(135deg,#1a365d 0%,#0f2744 100%);}
+[data-theme="dark"]{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--text-muted:#94a3b8;--border:#334155;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.navbar{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(10px);}
+.nav-container{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:.75rem;font-size:1.5rem;font-weight:800;color:var(--primary);text-decoration:none;}
+.logo i{color:var(--accent);font-size:1.75rem;}
+.nav-links{display:flex;gap:2rem;align-items:center;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--text-muted);font-weight:600;transition:color .2s;position:relative;font-size:.95rem;}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;right:0;left:0;height:2px;background:var(--accent);border-radius:2px;}
+.nav-actions{display:flex;gap:1rem;align-items:center;}
+.btn{padding:.625rem 1.25rem;border-radius:8px;font-weight:700;cursor:pointer;transition:all .2s;border:none;font-size:.875rem;display:inline-flex;align-items:center;gap:.5rem;font-family:'Noto Sans Arabic',sans-serif;}
+.btn-primary{background:var(--primary);color:white;}
+.btn-primary:hover{background:var(--primary-light);transform:translateY(-1px);box-shadow:var(--shadow);}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text);}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);}
+.icon-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--border);color:var(--text);cursor:pointer;transition:all .2s;}
+.icon-btn:hover{background:var(--primary);color:white;border-color:var(--primary);}
+.hero{background:var(--grad);color:white;padding:5rem 2rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60"><path d="M30 0L60 30L30 60L0 30L30 0z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');opacity:.5;}
+.hero-content{max-width:1400px;margin:0 auto;position:relative;z-index:1;}
+.hero h1{font-size:3.5rem;font-weight:800;margin-bottom:1rem;line-height:1.2;}
+.hero h1 span{color:var(--accent);}
+.hero p{font-size:1.25rem;opacity:.9;max-width:600px;margin-bottom:2rem;}
+.search-container{background:var(--surface);border-radius:16px;padding:1.5rem;box-shadow:var(--shadow-lg);max-width:1000px;margin-top:2rem;}
+.search-tabs{display:flex;gap:.5rem;margin-bottom:1rem;border-bottom:2px solid var(--border);padding-bottom:.5rem;}
+.search-tab{padding:.5rem 1.25rem;border-radius:8px;cursor:pointer;font-weight:700;color:var(--text-muted);transition:all .2s;border:none;background:none;font-family:'Noto Sans Arabic',sans-serif;}
+.search-tab.active{background:var(--primary);color:white;}
+.search-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:1rem;align-items:end;}
+.search-field{display:flex;flex-direction:column;gap:.375rem;}
+.search-field label{font-size:.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;}
+.search-field input,.search-field select{padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.9375rem;background:var(--bg);color:var(--text);font-family:'Noto Sans Arabic',sans-serif;}
+.search-field input:focus,.search-field select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,54,93,.1);}
+.search-btn{padding:.875rem 2rem;height:fit-content;}
+.stats-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:1.5rem 2rem;}
+.stats-container{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat-item{text-align:center;padding:1rem;border-radius:12px;transition:all .2s;}
+.stat-item:hover{background:var(--bg);}
+.stat-value{font-size:2rem;font-weight:800;color:var(--primary);}
+.stat-label{font-size:.875rem;color:var(--text-muted);margin-top:.25rem;}
+.stat-change{font-size:.75rem;font-weight:700;margin-top:.25rem;color:var(--success);}
+.section{max-width:1400px;margin:0 auto;padding:4rem 2rem;}
+.section-header{display:flex;justify-content:space-between;align-items:end;margin-bottom:2rem;}
+.section-title{font-size:2rem;font-weight:800;color:var(--text);}
+.section-subtitle{color:var(--text-muted);margin-top:.5rem;}
+.view-all{color:var(--primary);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+.properties-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1.5rem;}
+.property-card{background:var(--surface);border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:all .3s ease;cursor:pointer;text-decoration:none;color:inherit;display:block;}
+.property-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.property-image{position:relative;height:240px;overflow:hidden;}
+.property-image img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.property-card:hover .property-image img{transform:scale(1.05);}
+.property-badge{position:absolute;top:1rem;right:1rem;padding:.375rem .875rem;border-radius:20px;font-size:.75rem;font-weight:700;text-transform:uppercase;}
+.badge-sale{background:var(--success);color:white;}.badge-rent{background:var(--primary);color:white;}.badge-featured{background:var(--accent);color:white;}
+.property-favorite{position:absolute;top:1rem;left:1rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;}
+.property-favorite:hover{background:var(--danger);color:white;}
+.property-content{padding:1.5rem;}
+.property-price{font-size:1.5rem;font-weight:800;color:var(--primary);margin-bottom:.5rem;}
+.property-price span{font-size:.875rem;font-weight:400;color:var(--text-muted);}
+.property-title{font-size:1.125rem;font-weight:700;margin-bottom:.5rem;color:var(--text);}
+.property-location{display:flex;align-items:center;gap:.5rem;color:var(--text-muted);font-size:.875rem;margin-bottom:1rem;}
+.property-features{display:flex;gap:1.5rem;padding-top:1rem;border-top:1px solid var(--border);}
+.property-feature{display:flex;align-items:center;gap:.375rem;font-size:.875rem;color:var(--text-muted);}
+.property-feature i{color:var(--primary);}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.insight-card{background:var(--surface);border-radius:16px;padding:2rem;border:1px solid var(--border);}
+.insight-icon{width:48px;height:48px;border-radius:12px;background:rgba(26,54,93,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--primary);font-size:1.25rem;}
+.insight-title{font-size:1.125rem;font-weight:700;margin-bottom:.5rem;}
+.insight-text{color:var(--text-muted);font-size:.9375rem;line-height:1.6;}
+.insight-stat{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.insight-stat-value{font-size:1.5rem;font-weight:800;color:var(--primary);}
+.insight-stat-label{font-size:.75rem;color:var(--text-muted);}
+.regions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.region-card{position:relative;border-radius:16px;overflow:hidden;height:280px;cursor:pointer;}
+.region-card img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.region-card:hover img{transform:scale(1.1);}
+.region-overlay{position:absolute;bottom:0;right:0;left:0;padding:2rem 1.5rem 1.5rem;background:linear-gradient(transparent,rgba(0,0,0,.8));color:white;}
+.region-name{font-size:1.25rem;font-weight:800;}.region-count{font-size:.875rem;opacity:.9;}
+.region-price{position:absolute;top:1rem;left:1rem;background:rgba(255,255,255,.95);color:var(--primary);padding:.5rem 1rem;border-radius:20px;font-weight:700;font-size:.875rem;}
+.calculator-section{background:var(--grad);border-radius:24px;padding:3rem;color:white;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.calculator-form{display:flex;flex-direction:column;gap:1.5rem;}
+.calc-field{display:flex;flex-direction:column;gap:.5rem;}
+.calc-field label{font-size:.875rem;opacity:.9;}
+.calc-field input,.calc-field select{padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:white;font-size:1rem;font-family:'Noto Sans Arabic',sans-serif;}
+.calc-field input::placeholder{color:rgba(255,255,255,.5);}
+.calc-results{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:16px;padding:2rem;border:1px solid rgba(255,255,255,.2);}
+.calc-result-item{display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+.calc-result-item:last-child{border-bottom:none;font-size:1.25rem;font-weight:800;}
+.agents-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.agent-card{background:var(--surface);border-radius:16px;padding:2rem;text-align:center;border:1px solid var(--border);transition:all .2s;}
+.agent-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.agent-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;object-fit:cover;border:3px solid var(--accent);}
+.agent-name{font-weight:800;font-size:1.125rem;}.agent-title{color:var(--text-muted);font-size:.875rem;margin-bottom:1rem;}
+.agent-stats{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem;}
+.agent-stat{text-align:center;}.agent-stat-value{font-weight:800;color:var(--primary);}.agent-stat-label{font-size:.75rem;color:var(--text-muted);}
+.footer{background:var(--primary);color:white;padding:4rem 2rem 2rem;margin-top:4rem;}
+.footer-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+.footer-brand{font-size:1.5rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;}
+.footer-desc{opacity:.8;line-height:1.6;margin-bottom:1.5rem;}
+.footer-social{display:flex;gap:1rem;}
+.footer-social a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;transition:all .2s;}
+.footer-social a:hover{background:var(--accent);}
+.footer-title{font-weight:800;margin-bottom:1.5rem;font-size:1.125rem;}
+.footer-links{list-style:none;}.footer-links li{margin-bottom:.75rem;}
+.footer-links a{color:rgba(255,255,255,.8);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--accent);}
+.footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);text-align:center;opacity:.7;font-size:.875rem;}
+.mobile-menu-btn{display:none;background:none;border:none;font-size:1.5rem;color:var(--text);cursor:pointer;}
+.filter-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.filter-tag{padding:.5rem 1rem;border-radius:20px;background:var(--bg);border:1.5px solid var(--border);font-size:.875rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.5rem;font-family:'Noto Sans Arabic',sans-serif;}
+.filter-tag:hover,.filter-tag.active{background:var(--primary);color:white;border-color:var(--primary);}
+.toast{position:fixed;bottom:2rem;left:2rem;background:var(--surface);border:1px solid var(--border);padding:1rem 1.5rem;border-radius:12px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:.75rem;z-index:9999;transform:translateY(100px);opacity:0;transition:all .3s;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast-success{border-right:4px solid var(--success);}
+.highlight-result{background:var(--accent);color:white;padding:.25rem .75rem;border-radius:6px;font-weight:800;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.animate-in{animation:fadeIn .6s ease-out forwards;}
+@media(max-width:1024px){.search-grid{grid-template-columns:1fr 1fr;}.insights-grid{grid-template-columns:1fr;}.regions-grid{grid-template-columns:repeat(2,1fr);}.agents-grid{grid-template-columns:repeat(2,1fr);}.calculator-section{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.hero h1{font-size:2rem;}.nav-links{display:none;}.mobile-menu-btn{display:block;}.search-grid{grid-template-columns:1fr;}.stats-container{grid-template-columns:repeat(2,1fr);}.properties-grid{grid-template-columns:1fr;}.regions-grid{grid-template-columns:1fr;}.agents-grid{grid-template-columns:1fr;}.section-header{flex-direction:column;align-items:flex-start;gap:1rem;}.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+<a href="#" class="logo"><i class="fas fa-building"></i>بيت لبنان</a>
+<ul class="nav-links"><li><a href="#" class="active">شراء</a></li><li><a href="#">إيجار</a></li><li><a href="#">تجاري</a></li><li><a href="#">مشاريع جديدة</a></li><li><a href="#">الوكلاء</a></li><li><a href="#">تحليل السوق</a></li></ul>
+<div class="nav-actions">
+<button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع"><i class="fas fa-moon"></i></button>
+<button class="icon-btn" onclick="toggleLanguage()" title="تبديل اللغة"><i class="fas fa-globe"></i></button>
+<button class="btn btn-primary"><i class="fas fa-plus"></i>أضف عقار</button>
+</div>
+<button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+</div></nav>
+
+<section class="hero"><div class="hero-content">
+<h1>ابحث عن <span>منزل أحلامك</span> في لبنان</h1>
+<p>اكتشف العقارات المتميزة في بيروت جبيل بترون وغيرها. من الشقق الفاخرة على الواجهة البحرية إلى الفيلات الجبلية.</p>
+<div class="search-container">
+<div class="search-tabs"><button class="search-tab active">شراء</button><button class="search-tab">إيجار</button><button class="search-tab">تجاري</button><button class="search-tab">مشاريع جديدة</button></div>
+<div class="search-grid">
+<div class="search-field"><label>الموقع</label><input type="text" placeholder="المدينة، الحي، أو المنطقة..." id="searchLocation"></div>
+<div class="search-field"><label>نوع العقار</label><select id="propertyType"><option>جميع الأنواع</option><option>شقة</option><option>فيلا</option><option>بنتهاوس</option><option>مكتب</option><option>محل</option><option>أرض</option></select></div>
+<div class="search-field"><label>السعر الأدنى</label><select id="minPrice"><option>بدون حد أدنى</option><option>100,000$</option><option>250,000$</option><option>500,000$</option><option>1,000,000$</option></select></div>
+<div class="search-field"><label>السعر الأقصى</label><select id="maxPrice"><option>بدون حد أقصى</option><option>500,000$</option><option>1,000,000$</option><option>2,000,000$</option><option>5,000,000$</option></select></div>
+<button class="btn btn-primary search-btn" onclick="searchProperties()"><i class="fas fa-search"></i>بحث</button>
+</div></div>
+</div></section>
+
+<div class="stats-bar"><div class="stats-container">
+<div class="stat-item"><div class="stat-value">6,800$</div><div class="stat-label">متوسط السعر/م² (مميز)</div><div class="stat-change">▲ 32.83% (بيروت)</div></div>
+<div class="stat-item"><div class="stat-value">2,450+</div><div class="stat-label">عقار معروض</div><div class="stat-change">▲ 15% هذا الشهر</div></div>
+<div class="stat-item"><div class="stat-value">375,000$</div><div class="stat-label">متوسط سعر البيع</div><div class="stat-change">▲ 2.1% سنوياً</div></div>
+<div class="stat-item"><div class="stat-value">48 يوم</div><div class="stat-label">متوسط مدة البيع</div><div class="stat-change">▼ أسرع بـ 5 أيام</div></div>
+</div></div>
+
+<section class="section"><div class="section-header"><div><h2 class="section-title">عقارات مميزة</h2><p class="section-subtitle">عقارات مختارة بعناية في أفضل مناطق لبنان</p></div><a href="#" class="view-all">عرض الكل <i class="fas fa-arrow-left"></i></a></div>
+<div class="filter-tags"><span class="filter-tag active">الكل</span><span class="filter-tag">بيروت</span><span class="filter-tag">جبيل</span><span class="filter-tag">بترون</span><span class="filter-tag">كسروان</span><span class="filter-tag">فاريا</span><span class="filter-tag">وسط بيروت</span><span class="filter-tag">الأشرفية</span></div>
+<div class="properties-grid" id="propertiesGrid">
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="شقة"><span class="property-badge badge-sale">للبيع</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">1,475,000$ </div><h3 class="property-title">شقة فاخرة في وسط بيروت</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>وسط بيروت</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 3 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 3 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 289 م²</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop" alt="بنتهاوس"><span class="property-badge badge-featured">مميز</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">3,650,000$ </div><h3 class="property-title">بنتهاوس بإطلالة بحرية في الروشة</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>الروشة، بيروت</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 4 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 4 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 450 م²</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="فيلا"><span class="property-badge badge-sale">للبيع</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">850,000$ </div><h3 class="property-title">فيلا حديثة في نادي فقرا</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>فقرا، كسروان</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 4 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 3 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 320 م²</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="شقة"><span class="property-badge badge-rent">للإيجار</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">2,500$ <span>/شهر</span></div><h3 class="property-title">شقة مفروشة في الأشرفية</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>الأشرفية، بيروت</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 2 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 2 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 150 م²</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="فيلا"><span class="property-badge badge-sale">للبيع</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">1,200,000$ </div><h3 class="property-title">فيلا ساحلية في عمشيت</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>عمشيت، جبيل</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 5 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 4 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 400 م²</span></div></div></div>
+<div class="property-card"><div class="property-image"><img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop" alt="شقة"><span class="property-badge badge-featured">مميز</span><button class="property-favorite"><i class="far fa-heart"></i></button></div><div class="property-content"><div class="property-price">750,000$ </div><h3 class="property-title">شقة بحديقة في بترون</h3><div class="property-location"><i class="fas fa-map-marker-alt"></i>بترون، شمال لبنان</div><div class="property-features"><span class="property-feature"><i class="fas fa-bed"></i> 3 غرف</span><span class="property-feature"><i class="fas fa-bath"></i> 2 حمامات</span><span class="property-feature"><i class="fas fa-ruler-combined"></i> 200 م²</span></div></div></div>
+</div></section>
+
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="section-header"><div><h2 class="section-title">تحليل السوق 2026</h2><p class="section-subtitle">تحليل مبني على البيانات لسوق العقارات اللبناني</p></div></div>
+<div class="insights-grid">
+<div class="insight-card"><div class="insight-icon"><i class="fas fa-chart-line"></i></div><h3 class="insight-title">تعافي الأسعار</h3><p class="insight-text">استعادت المناطق الرئيسية مثل وسط بيروت والأشرفية 80% من مستويات ما قبل الأزمة، مدفوعة بطلب المغتربين والمشترين النقديين.</p><div class="insight-stat"><div><div class="insight-stat-value">+32.83%</div><div class="insight-stat-label">نمو بيروت سنوياً</div></div><span style="color:var(--success);font-weight:700;">▲ متصاعد</span></div></div>
+<div class="insight-card"><div class="insight-icon"><i class="fas fa-users"></i></div><h3 class="insight-title">ملف المشتري</h3><p class="insight-text">يسيطر على السوق المغتربون اللبنانيون والمستثمرون النقديون. المشترون المحليون لا يزالون مقيدين بسبب عدم توفر التمويل المصرفي.</p><div class="insight-stat"><div><div class="insight-stat-value">78%</div><div class="insight-stat-label">مشترين مغتربين</div></div><span style="color:var(--primary);font-weight:700;">سوق نقدي</span></div></div>
+<div class="insight-card"><div class="insight-icon"><i class="fas fa-home"></i></div><h3 class="insight-title">سوق الإيجار</h3><p class="insight-text">ارتفع الطلب على الإيجارات بسبب النزوح الداخلي والعائدين. الشقق الصغيرة والمتوسطة في المناطق الآمنة تشهد أعلى طلب.</p><div class="insight-stat"><div><div class="insight-stat-value">+15%</div><div class="insight-stat-label">طلب الإيجار</div></div><span style="color:var(--success);font-weight:700;">نشاط مرتفع</span></div></div>
+</div></section>
+
+<section class="section"><div class="section-header"><div><h2 class="section-title">استكشف حسب المنطقة</h2><p class="section-subtitle">اكتشف العقارات في أكثر مناطق لبنان طلباً</p></div></div>
+<div class="regions-grid">
+<div class="region-card"><img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&h=300&fit=crop" alt="بيروت"><div class="region-overlay"><div class="region-name">بيروت</div><div class="region-count">1,240 عقار</div></div><div class="region-price">من 1,700$/م²</div></div>
+<div class="region-card"><img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400&h=300&fit=crop" alt="جبيل"><div class="region-overlay"><div class="region-name">جبيل</div><div class="region-count">486 عقار</div></div><div class="region-price">من 1,200$/م²</div></div>
+<div class="region-card"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="فاريا"><div class="region-overlay"><div class="region-name">فاريا</div><div class="region-count">312 عقار</div></div><div class="region-price">من 800$/م²</div></div>
+<div class="region-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" alt="بترون"><div class="region-overlay"><div class="region-name">بترون</div><div class="region-count">198 عقار</div></div><div class="region-price">من 900$/م²</div></div>
+</div></section>
+
+<section class="section"><div class="calculator-section"><div><h2 style="font-size:2rem;margin-bottom:1rem;">حاسبة الاستثمار</h2><p style="opacity:.9;margin-bottom:2rem;">قدر مدفوعاتك الشهرية وعوائد استثمارك في العقارات اللبنانية. ملاحظة: التمويل المصرفي محدود؛ معظم الصفقات نقدية.</p>
+<div class="calculator-form">
+<div class="calc-field"><label>سعر العقار (دولار)</label><input type="number" id="propertyPrice" value="500000" oninput="calculateMortgage()"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;"><div class="calc-field"><label>الدفعة الأولى (%)</label><input type="number" id="downPayment" value="30" oninput="calculateMortgage()"></div><div class="calc-field"><label>نسبة الفائدة (%)</label><input type="number" id="interestRate" value="8" step="0.1" oninput="calculateMortgage()"></div></div>
+<div class="calc-field"><label>مدة القرض (سنوات)</label><select id="loanTerm" onchange="calculateMortgage()"><option value="10">10 سنوات</option><option value="15">15 سنة</option><option value="20" selected>20 سنة</option><option value="25">25 سنة</option></select></div>
+</div></div>
+<div class="calc-results"><h3 style="margin-bottom:1.5rem;font-size:1.25rem;">ملخص المدفوعات</h3>
+<div class="calc-result-item"><span>سعر العقار</span><span id="resultPrice">500,000$</span></div>
+<div class="calc-result-item"><span>الدفعة الأولى</span><span id="resultDown">150,000$</span></div>
+<div class="calc-result-item"><span>مبلغ القرض</span><span id="resultLoan">350,000$</span></div>
+<div class="calc-result-item"><span>القسط الشهري</span><span class="highlight-result" id="resultMonthly">2,928$</span></div>
+<div class="calc-result-item"><span>إجمالي الفوائد</span><span id="resultInterest">352,720$</span></div>
+<div class="calc-result-item"><span>التكلفة الإجمالية</span><span id="resultTotal">852,720$</span></div>
+</div></div></section>
+
+<section class="section"><div class="section-header"><div><h2 class="section-title">الوكلاء المميزون</h2><p class="section-subtitle">تعامل مع أفضل محترفي العقارات في لبنان</p></div><a href="#" class="view-all">عرض جميع الوكلاء <i class="fas fa-arrow-left"></i></a></div>
+<div class="agents-grid">
+<div class="agent-card"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face" alt="وكيل" class="agent-avatar"><div class="agent-name">كريم حداد</div><div class="agent-title">مستشار أول</div><div class="agent-stats"><div class="agent-stat"><div class="agent-stat-value">142</div><div class="agent-stat-label">مبيعة</div></div><div class="agent-stat"><div class="agent-stat-value">4.9</div><div class="agent-stat-label">تقييم</div></div></div><button class="btn btn-outline" style="width:100%;">تواصل</button></div>
+<div class="agent-card"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="وكيلة" class="agent-avatar"><div class="agent-name">نادين خوري</div><div class="agent-title">أخصائية فخامة</div><div class="agent-stats"><div class="agent-stat"><div class="agent-stat-value">89</div><div class="agent-stat-label">مبيعة</div></div><div class="agent-stat"><div class="agent-stat-value">5.0</div><div class="agent-stat-label">تقييم</div></div></div><button class="btn btn-outline" style="width:100%;">تواصل</button></div>
+<div class="agent-card"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="وكيل" class="agent-avatar"><div class="agent-name">فادي موسى</div><div class="agent-title">مستشار استثماري</div><div class="agent-stats"><div class="agent-stat"><div class="agent-stat-value">203</div><div class="agent-stat-label">مبيعة</div></div><div class="agent-stat"><div class="agent-stat-value">4.8</div><div class="agent-stat-label">تقييم</div></div></div><button class="btn btn-outline" style="width:100%;">تواصل</button></div>
+<div class="agent-card"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="وكيلة" class="agent-avatar"><div class="agent-name">ريما سعادة</div><div class="agent-title">خبيرة تجارية</div><div class="agent-stats"><div class="agent-stat"><div class="agent-stat-value">67</div><div class="agent-stat-label">مبيعة</div></div><div class="agent-stat"><div class="agent-stat-value">4.9</div><div class="agent-stat-label">تقييم</div></div></div><button class="btn btn-outline" style="width:100%;">تواصل</button></div>
+</div></section>
+
+<footer class="footer"><div class="footer-grid"><div><div class="footer-brand"><i class="fas fa-building" style="color:var(--accent);"></i>بيت لبنان</div><p class="footer-desc">أول منصة عقارية في لبنان تربط بين المشترين والبائعين والمستثمرين مع العقارات المتميزة في جميع أنحاء البلاد. موثوق بها منذ 2010.</p><div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
+<div><div class="footer-title">العقارات</div><ul class="footer-links"><li><a href="#">شقق للبيع</a></li><li><a href="#">فيلات للبيع</a></li><li><a href="#">مساحات تجارية</a></li><li><a href="#">أراضي للبيع</a></li><li><a href="#">مشاريع جديدة</a></li></ul></div>
+<div><div class="footer-title">الشركة</div><ul class="footer-links"><li><a href="#">من نحن</a></li><li><a href="#">وكلاؤنا</a></li><li><a href="#">تقارير السوق</a></li><li><a href="#">الوظائف</a></li><li><a href="#">تواصل معنا</a></li></ul></div>
+<div><div class="footer-title">الدعم</div><ul class="footer-links"><li><a href="#">مركز المساعدة</a></li><li><a href="#">شروط الخدمة</a></li><li><a href="#">سياسة الخصوصية</a></li><li><a href="#">خريطة الموقع</a></li><li><a href="#">أضف عقارك</a></li></ul></div>
+</div><div class="footer-bottom"><p>© 2026 بيت لبنان للعقارات. جميع الحقوق محفوظة. | بيروت، لبنان</p></div></footer>
+
+<div class="toast toast-success" id="toast"><i class="fas fa-check-circle" style="color:var(--success);"></i><span id="toastMessage">تمت العملية بنجاح!</span></div>
+
+<script>
+function toggleTheme(){const html=document.documentElement;const current=html.getAttribute('data-theme');const next=current==='dark'?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);document.querySelector('.fa-moon').classList.toggle('fa-sun');}
+function toggleLanguage(){showToast('جاري تبديل اللغة...');setTimeout(()=>location.reload(),1000);}
+function calculateMortgage(){const price=parseFloat(document.getElementById('propertyPrice').value)||0;const dp=parseFloat(document.getElementById('downPayment').value)||0;const rate=parseFloat(document.getElementById('interestRate').value)||0;const years=parseInt(document.getElementById('loanTerm').value)||20;const down=price*(dp/100);const loan=price-down;const mr=rate/100/12;const np=years*12;let mp=0;if(rate>0){mp=loan*(mr*Math.pow(1+mr,np))/(Math.pow(1+mr,np)-1);}else{mp=loan/np;}const tc=mp*np;const ti=tc-loan;document.getElementById('resultPrice').textContent='$'+price.toLocaleString();document.getElementById('resultDown').textContent='$'+Math.round(down).toLocaleString();document.getElementById('resultLoan').textContent='$'+Math.round(loan).toLocaleString();document.getElementById('resultMonthly').textContent='$'+Math.round(mp).toLocaleString();document.getElementById('resultInterest').textContent='$'+Math.round(ti).toLocaleString();document.getElementById('resultTotal').textContent='$'+Math.round(tc).toLocaleString();}
+function searchProperties(){const loc=document.getElementById('searchLocation').value;const type=document.getElementById('propertyType').value;showToast('جاري البحث عن '+type+' في '+(loc||'لبنان')+'...');document.getElementById('propertiesGrid').style.opacity='0.5';setTimeout(()=>document.getElementById('propertiesGrid').style.opacity='1',500);}
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('toastMessage').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+document.querySelectorAll('.filter-tag').forEach(tag=>{tag.addEventListener('click',function(){document.querySelectorAll('.filter-tag').forEach(t=>t.classList.remove('active'));this.classList.add('active');showToast('تم التصفية حسب: '+this.textContent);});});
+document.querySelectorAll('.search-tab').forEach(tab=>{tab.addEventListener('click',function(){document.querySelectorAll('.search-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active');});});
+document.querySelectorAll('.property-favorite').forEach(btn=>{btn.addEventListener('click',function(e){e.stopPropagation();const icon=this.querySelector('i');if(icon.classList.contains('far')){icon.classList.remove('far');icon.classList.add('fas');icon.style.color='#e53e3e';showToast('تمت الإضافة إلى المفضلة');}else{icon.classList.remove('fas');icon.classList.add('far');icon.style.color='';showToast('تمت الإزالة من المفضلة');}});});
+document.querySelectorAll('.property-card').forEach(card=>{card.addEventListener('click',()=>showToast('جاري فتح تفاصيل العقار...'));});
+document.addEventListener('DOMContentLoaded',function(){const saved=localStorage.getItem('theme');if(saved)document.documentElement.setAttribute('data-theme',saved);calculateMortgage();const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('animate-in');});},{threshold:0.1});document.querySelectorAll('.property-card,.insight-card,.region-card,.agent-card').forEach(el=>obs.observe(el));});
+</script>
+</body>
+</html>

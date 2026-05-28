@@ -128,6 +128,26 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 .animate-in{animation:fadeIn .6s ease-out forwards;}
 @media(max-width:1024px){.search-grid{grid-template-columns:1fr 1fr;}.insights-grid{grid-template-columns:1fr;}.regions-grid{grid-template-columns:repeat(2,1fr);}.agents-grid{grid-template-columns:repeat(2,1fr);}.calculator-section{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:768px){.hero h1{font-size:2rem;}.nav-links{display:none;}.mobile-menu-btn{display:block;}.search-grid{grid-template-columns:1fr;}.stats-container{grid-template-columns:repeat(2,1fr);}.properties-grid{grid-template-columns:1fr;}.regions-grid{grid-template-columns:1fr;}.agents-grid{grid-template-columns:1fr;}.section-header{flex-direction:column;align-items:flex-start;gap:1rem;}.footer-grid{grid-template-columns:1fr;}}
+
+/* Modal Styles */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:9998;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s;}
+.modal-overlay.show{opacity:1;visibility:visible;}
+.modal{background:var(--surface);border-radius:20px;width:100%;max-width:700px;max-height:90vh;overflow-y:auto;margin:1rem;box-shadow:var(--shadow-lg);border:1px solid var(--border);transform:scale(.9);transition:transform .3s;}
+.modal-overlay.show .modal{transform:scale(1);}
+.modal-header{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.modal-title{font-size:1.25rem;font-weight:800;color:var(--text);}
+.modal-close{width:36px;height:36px;border-radius:50%;border:none;background:var(--bg);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:1rem;}
+.modal-close:hover{background:var(--danger);color:white;}
+.modal-body{padding:2rem;}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.modal-field{display:flex;flex-direction:column;gap:.375rem;}
+.modal-field label{font-size:.875rem;font-weight:700;color:var(--text-muted);}
+.modal-field input,.modal-field select,.modal-field textarea{padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-size:.9375rem;background:var(--bg);color:var(--text);font-family:'Noto Sans Arabic',sans-serif;}
+.modal-field input:focus,.modal-field select:focus,.modal-field textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,54,93,.1);}
+.modal-field textarea{resize:vertical;min-height:100px;}
+.modal-field.full-width{grid-column:1 / -1;}
+.modal-footer{padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:1rem;}
+@media(max-width:768px){.modal-grid{grid-template-columns:1fr;}.modal{max-width:100%;margin:.5rem;}}
 </style>
 <base target="_blank">
 </head>
@@ -145,7 +165,7 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 <div class="nav-actions">
 <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع"><i class="fas fa-moon"></i></button>
 <button class="icon-btn" onclick="toggleLanguage()" title="Switch Language"><i class="fas fa-globe"></i></button>
-<button class="btn btn-primary" onclick="showToast('جاري فتح نموذج إضافة عقار جديد...')"><i class="fas fa-plus"></i><span data-key="add_property">أضف عقار</span></button>
+<button class="btn btn-primary" onclick="openAddPropertyModal()"><i class="fas fa-plus"></i><span data-key="add_property">أضف عقار</span></button>
 </div>
 <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
 </div></nav>
@@ -280,7 +300,9 @@ body{font-family:'Noto Sans Arabic',sans-serif;background:var(--bg);color:var(--
 const translations={
 ar:{
 logo:"بيت لبنان",nav_buy:"شراء",nav_rent:"إيجار",nav_commercial:"تجاري",nav_new:"مشاريع جديدة",nav_agents:"الوكلاء",nav_analysis:"تحليل السوق",
-add_property:"أضف عقار",hero_title:"ابحث عن منزل أحلامك في لبنان",hero_desc:"اكتشف العقارات المتميزة في بيروت جبيل بترون وغيرها. من الشقق الفاخرة على الواجهة البحرية إلى الفيلات الجبلية.",
+add_property:"أضف عقار",
+modal_title:"إضافة عقار جديد",modal_title_prop:"عنوان الإعلان",modal_type:"نوع العقار",modal_purpose:"الغرض",modal_location:"الموقع",modal_area:"المساحة (م²)",modal_price:"السعر (دولار)",modal_bedrooms:"عدد الغرف",modal_bathrooms:"عدد الحمامات",modal_desc:"وصف العقار",modal_images:"رابط الصورة الرئيسية",modal_cancel:"إلغاء",modal_submit:"نشر الإعلان",
+hero_title:"ابحث عن منزل أحلامك في لبنان",hero_desc:"اكتشف العقارات المتميزة في بيروت جبيل بترون وغيرها. من الشقق الفاخرة على الواجهة البحرية إلى الفيلات الجبلية.",
 tab_buy:"شراء",tab_rent:"إيجار",tab_commercial:"تجاري",tab_new:"مشاريع جديدة",
 lbl_location:"الموقع",lbl_type:"نوع العقار",lbl_min:"السعر الأدنى",lbl_max:"السعر الأقصى",btn_search:"بحث",
 stat_avg:"متوسط السعر/م² (مميز)",stat_listed:"عقار معروض",stat_sale:"متوسط سعر البيع",stat_days:"متوسط مدة البيع",
@@ -302,7 +324,9 @@ footer_rights:"للعقارات. جميع الحقوق محفوظة.",footer_cit
 },
 en:{
 logo:"Bayt Lebanon",nav_buy:"Buy",nav_rent:"Rent",nav_commercial:"Commercial",nav_new:"New Projects",nav_agents:"Agents",nav_analysis:"Market Analysis",
-add_property:"Add Property",hero_title:"Find Your Dream Home in Lebanon",hero_desc:"Discover premium properties in Beirut, Jbeil, Batroun and more. From luxury seafront apartments to mountain villas.",
+add_property:"Add Property",
+modal_title:"Add New Property",modal_title_prop:"Listing Title",modal_type:"Property Type",modal_purpose:"Purpose",modal_location:"Location",modal_area:"Area (m²)",modal_price:"Price (USD)",modal_bedrooms:"Bedrooms",modal_bathrooms:"Bathrooms",modal_desc:"Description",modal_images:"Main Image URL",modal_cancel:"Cancel",modal_submit:"Publish Listing",
+hero_title:"Find Your Dream Home in Lebanon",hero_desc:"Discover premium properties in Beirut, Jbeil, Batroun and more. From luxury seafront apartments to mountain villas.",
 tab_buy:"Buy",tab_rent:"Rent",tab_commercial:"Commercial",tab_new:"New Projects",
 lbl_location:"Location",lbl_type:"Property Type",lbl_min:"Min Price",lbl_max:"Max Price",btn_search:"Search",
 stat_avg:"Avg Price/m² (Premium)",stat_listed:"Properties Listed",stat_sale:"Avg Sale Price",stat_days:"Avg Days to Sell",
@@ -457,6 +481,132 @@ if(e.isIntersecting)e.target.classList.add('animate-in');
 },{threshold:0.1});
 document.querySelectorAll('.property-card,.insight-card,.region-card,.agent-card').forEach(el=>obs.observe(el));
 });
+
+function openAddPropertyModal(){
+document.getElementById('addPropertyModal').classList.add('show');
+document.body.style.overflow='hidden';
+}
+
+function closeAddPropertyModal(){
+document.getElementById('addPropertyModal').classList.remove('show');
+document.body.style.overflow='';
+}
+
+document.getElementById('addPropertyModal').addEventListener('click',function(e){
+if(e.target===this)closeAddPropertyModal();
+});
+
+function submitProperty(){
+const title=document.getElementById('propTitle').value;
+const type=document.getElementById('propType').value;
+const purpose=document.getElementById('propPurpose').value;
+const location=document.getElementById('propLocation').value;
+const area=document.getElementById('propArea').value;
+const price=document.getElementById('propPrice').value;
+const bedrooms=document.getElementById('propBedrooms').value;
+const bathrooms=document.getElementById('propBathrooms').value;
+const desc=document.getElementById('propDesc').value;
+const image=document.getElementById('propImage').value;
+
+if(!title||!location||!area||!price){
+showToast(currentLang==='ar'?'يرجى ملء جميع الحقول المطلوبة':'Please fill all required fields');
+return;
+}
+
+const propertyData={
+title:title,
+type:type,
+purpose:purpose,
+location:location,
+area:area,
+price:price,
+bedrooms:bedrooms,
+bathrooms:bathrooms,
+description:desc,
+image:image||'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop'
+};
+
+console.log('New Property:',propertyData);
+showToast(currentLang==='ar'?'تم نشر الإعلان بنجاح!':'Property listed successfully!');
+closeAddPropertyModal();
+
+// Clear form
+['propTitle','propLocation','propArea','propPrice','propDesc','propImage'].forEach(id=>{
+document.getElementById(id).value='';
+});
+}
 </script>
+
+<!-- Add Property Modal -->
+<div class="modal-overlay" id="addPropertyModal">
+<div class="modal">
+<div class="modal-header">
+<h3 class="modal-title" data-key="modal_title">إضافة عقار جديد</h3>
+<button class="modal-close" onclick="closeAddPropertyModal()"><i class="fas fa-times"></i></button>
+</div>
+<div class="modal-body">
+<div class="modal-grid">
+<div class="modal-field full-width">
+<label data-key="modal_title_prop">عنوان الإعلان</label>
+<input type="text" id="propTitle" placeholder="مثال: شقة فاخرة في وسط بيروت">
+</div>
+<div class="modal-field">
+<label data-key="modal_type">نوع العقار</label>
+<select id="propType">
+<option>شقة</option>
+<option>فيلا</option>
+<option>بنتهاوس</option>
+<option>مكتب</option>
+<option>محل</option>
+<option>أرض</option>
+</select>
+</div>
+<div class="modal-field">
+<label data-key="modal_purpose">الغرض</label>
+<select id="propPurpose">
+<option>للبيع</option>
+<option>للإيجار</option>
+</select>
+</div>
+<div class="modal-field">
+<label data-key="modal_location">الموقع</label>
+<input type="text" id="propLocation" placeholder="مثال: الأشرفية، بيروت">
+</div>
+<div class="modal-field">
+<label data-key="modal_area">المساحة (م²)</label>
+<input type="number" id="propArea" placeholder="مثال: 150">
+</div>
+<div class="modal-field">
+<label data-key="modal_price">السعر (دولار)</label>
+<input type="number" id="propPrice" placeholder="مثال: 500000">
+</div>
+<div class="modal-field">
+<label data-key="modal_bedrooms">عدد الغرف</label>
+<select id="propBedrooms">
+<option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+</select>
+</div>
+<div class="modal-field">
+<label data-key="modal_bathrooms">عدد الحمامات</label>
+<select id="propBathrooms">
+<option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+</select>
+</div>
+<div class="modal-field full-width">
+<label data-key="modal_desc">وصف العقار</label>
+<textarea id="propDesc" placeholder="أضف وصفاً تفصيلياً للعقار..."></textarea>
+</div>
+<div class="modal-field full-width">
+<label data-key="modal_images">رابط الصورة الرئيسية</label>
+<input type="text" id="propImage" placeholder="https://example.com/image.jpg">
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="closeAddPropertyModal()" data-key="modal_cancel">إلغاء</button>
+<button class="btn btn-primary" onclick="submitProperty()" data-key="modal_submit">نشر الإعلان</button>
+</div>
+</div>
+</div>
 </body>
 </html>
